@@ -3,10 +3,11 @@ inside developer tools -->
 <script>
     (function(){
         "use strict";
+
         // This will always pass
-        var emailRegex = new RegExp(),
+        var emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/, 
             result = prompt("Enter Your email", ""),
-            valid = result.match(emailRegex);
+            valid = emailRegex.test(result);
 
         if (valid) {
             alert("Email valid");
