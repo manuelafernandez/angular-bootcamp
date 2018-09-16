@@ -1,18 +1,89 @@
 <!-- Take this file and open it on a browser, then open the console
     inside developer tools -->
-<script>
-    var Animal = (function(type) {
-        this.type = type;
-    });
+    <!DOCTYPE html>
+<html>
+    <body>
+        <!-- ORIGINAL
+        <script>
+            var Animal = (function(type) {
+                this.type = type;
+            });
 
-    Animal.prototype.talk = function() {
-        console.log(`Hi, I'm an Animal, but also a ${this.type}`);
-    };
+            Animal.prototype.talk = function() {
+                console.log(`Hi, I'm an Animal, but also a ${this.type}`);
+            };
 
-    let rabbit = new Animal("Rabbit");
-    rabbit.talk();
-</script>
+            let rabbit = new Animal("Rabbit");
+            rabbit.talk();
+        </script>
+        -->
 
+        <script>
+            class Animal {
+
+                constructor(type, name, teeth) {
+                    this.type = type;
+                    this.name = name;
+                    this.teeth = teeth;
+                }
+
+                get type() {
+                    return this._type;
+                }
+
+                set type(value) {
+                    this._type = value;
+                }
+
+                get name() {
+                    return this._name;
+                }
+
+                set name(value) {
+                    this._name = value;
+                }
+
+                get teeth() {
+                    return this._teeth;
+                }
+
+                set teeth(value) {
+                    this._teeth = value;
+                }
+
+                talk(){
+                    console.log(`Hi, I'm an Animal, but also a ${this.type}`);
+                }
+
+                teeths(){
+                    console.log(`My teeth are ${this.teeth}`);
+                }
+
+                sayHi(){
+                    console.log(`My name is ${this.name}`);
+                }
+            }   
+
+            let rab = new Animal("Rabbit","Robert","small");
+            rab.talk(); 
+            rab.sayHi();
+
+            class Rabbit extends Animal{
+                talk(){
+                    console.log(`I'm a rabbit.`);
+                }
+                sayHi(){
+                    super.sayHi();
+                    this.talk();
+                }
+            }
+
+            let conejo = new Rabbit("Rabbit","Alice","big");
+            conejo.sayHi();
+
+        </script>
+    </body>
+</html>
 <!-- Now it's your turn to make some changes
     - Refactor the previous code to use getters and settters
     - Add at least 2 more properties
